@@ -1,0 +1,34 @@
+Qualquer numero inteiro que nao seja primo tem pelo menos um divisor maior que 1
+e menor ou igual a raiz desse numero.
+
+-> se n % a == 0
+-> entao a eh um divsor de n e n / a -> b sera o segundo divisor desse numero
+a menos que b seja igual a a.
+
+Os divisores de um numero aparecem aos pares.
+
+
+//GCD -> Greates common divisor
+GCD(a,b)=GCD(b, a mod b) esta eh a base do algoritmo
+do Euclides que nos permite determinar o GCD entre divisores
+numeros
+
+//LCM -> Least common multiple
+Pela Teoria dos numeros temos a seguinte formula
+𝑙𝑐𝑚 (𝑎, 𝑏) = 𝑎×𝑏 / gcd(𝑎,𝑏)
+
+//binary exponentiation
+
+//Aritmetica modular
+A expressão 𝑎 ≡ 𝑏 𝑚𝑜𝑑 𝑚 significa que a e b são equivalentes mod m, em programação, isso é o
+mesmo que dizer que a seguinte expressão booleana é verdadeira: a%m==b%m.
+➢ Exemplo: 42 ≡ 10 (𝑚𝑜𝑑 8)
+
+A aritmética modular possui algumas propriedades interessantes:
+➢ (a+b)%m=(a%m+b%m)%m
+➢ (a-b)%m=(a%m-b%m+m)%m
+➢ (a*b)%m=(a%m*b%m)%m
+➢ (a/b)%m=(a%m*ModInverse(b,m)%m)%m, ModInverse(b,m) é um x tal que 𝐛𝐱 ≡ 𝟏 𝒎𝒐𝒅 𝒎
+➢ Se m é coprimo de b, isto é, GCD(m,b)=1 (que é o caso comum em problemas de programação
+competitiva) então ModInverse(b,m) = binPow(b,m-2)%m (sem esquecer de modular dentro
+de binPow para evitar overflow).
