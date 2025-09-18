@@ -26,38 +26,38 @@ input					output
 
 using namespace std;
 
-pair<int, int> bsv(vector<int> vec, int x)
+pair<long long, long long> bsv(vector<long long> vec, long long x)
 {
-	pair<int, int> p;
-	vector<int> clone;
+	pair<long long, long long> p;
+	vector<long long> clone;
 
 	clone = vec;
 	sort(clone.begin(), clone.end());
-	int l = 0;
-	int r = clone.size() - 1;
+	long long l = 0;
+	long long r = clone.size() - 1;
 	while (l < r)
 	{
-		int	mid = (l + r) / 2;
 		if (clone[l] + clone[r] == x)
 		{
-			p.first=clone[l], p.second = clone[r];
+			p.first = clone[l];
+			p.second = clone[r];
 			return p;
 		}
-		else if (clone[r] > x)
-			r = mid;
 		else if (clone[l] + clone[r] < x)
-			l = mid;
+			l++;
+		else
+			r--;
 	}
 	cout << "IMPOSSIBLE";
 	exit(0);
 }
 
-int	bsp(vector<int> vec, int n, int index)
+int	bsp(vector<long long> vec, long long n, long long index)
 {
-	for (int i = 0; i < vec.size(); i ++)
+	for (long long i = 0; i < vec.size(); i ++)
 	{
-		if (vec[i] == n && i != index + 1)
-			return (i + 1);
+		if (vec[i] == n && (i != index))
+			return (i);
 	}
 	cout << "IMPOSSIBLE";
 	exit(0);
@@ -67,9 +67,9 @@ int	main(void)
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-	int	n, x, a;
-	vector<int> vec;
-	pair<int, int> p;
+	long long	n, x, a;
+	vector<long long> vec;
+	pair<long long, long long> p;
 	cin >> n;
 	cin >> x;
 	while (n--){
@@ -79,6 +79,6 @@ int	main(void)
 	p = bsv(vec, x);
 	a = bsp(vec, p.first, -1);
 	n = bsp(vec, p.second, a);
-	cout << a << " " << n;
+	cout << a + 1 << " " << n + 1;
 	return (0);
 }
