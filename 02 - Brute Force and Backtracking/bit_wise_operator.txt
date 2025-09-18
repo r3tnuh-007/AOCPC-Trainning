@@ -1,0 +1,15 @@
+Funcionamento do deslocamento do bit
+
+p = 1010; //10
+
+p << 1;
+
+p -> 10100 //20
+
+p >> 1;
+
+p -> 1010 //10
+
+p >> 1;
+
+p -> 101 //5
